@@ -1,0 +1,710 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+/* Width of scrollbar */
+::-webkit-scrollbar {
+    width: 10px;  /* adjust as needed */
+}
+
+/* Track (background of scrollbar) */
+::-webkit-scrollbar-track {
+    background: #000000; /* light gray background */
+}
+
+/* Handle (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: orange;   /* main orange color */
+    border-radius: 6px;   /* rounded corners */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darkorange; /* darker on hover */
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+}
+
+/* ----------- Navbar ----------- */
+
+#nav-logo   {
+    width: 3rem;
+}
+
+@media  (max-width: 800px)  {
+    #nav-logo   {
+        width: 2.5rem;
+    }
+}
+
+@media  (max-width: 364px)  {
+    #nav-logo   {
+        width: 2rem;
+    }
+}
+
+@media  (max-width: 313px)  {
+    #nav-logo   {
+        width: 1rem;
+    }
+}
+
+.navbar, .dropdown-menu {
+    background-color: black !important;
+}
+
+.navbar-brand, .nav-link, .dropdown-item    {
+    color: white !important;
+    font-size: 1.25rem !important;
+}
+
+@media (max-width: 1200px)  {
+    .navbar-brand, .nav-link, .dropdown-item    {
+        font-size: 1rem !important;
+    }
+}
+
+.dropdown-menu, .dropdown-item {
+    background-color: #000000 !important;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+    color: orange !important;
+}
+
+/* ----------- Hero Section ----------- */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    background: url('/images/WhatsApp Image 2025-07-05 at 14.20.49_4d6fc162.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 70px;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-section .content-box {
+    color: white;
+    max-width: 800px;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-section .content-box h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-section .content-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-section .content-box button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: orange;
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Consistent button transition */
+}
+.hero-section .content-box button:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.social-icons {
+    z-index: 2;
+    display: flex;
+    /*flex-direction: column;*/
+    gap: 15px;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.3s, transform 0.3s;
+}
+.social-icons i:hover {
+    color: orange;
+    transform: scale(1.1);
+}
+
+
+/* ----------- Gallery Section and others - Initial State (always visible unless hidden by JS) ----------- */
+.gallery-section,
+.category-gallery,
+.video-gallery,
+.contact-us-section {
+    /* These sections are 'block' by default for scroll view */
+    padding: 60px 20px;
+    position: relative;
+    color: white;
+    border-top: 1px solid #333;
+    /* transition for smoother display changes, although not strictly needed for display:none/block */
+    /* Removed display transition here, as it's not effective for display property changes */
+}
+
+
+/* Specific backgrounds for gallery types */
+.gallery-section {
+    background: url('/images/WhatsApp Image 2025-07-18 at 11.35.38_fac0ab0d.jpg') center/cover no-repeat;
+}
+
+.category-gallery {
+    background: url('/images/WhatsApp Image 2025-07-18 at 13.37.17_a3f4143c.jpg') center/cover no-repeat fixed;
+}
+
+.video-gallery {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+#wedding-video-gallery {
+    background-image: url('/images/WhatsApp Image 2025-07-05 at 12.52.38_1f1ec387.jpg');
+}
+
+#pre-wedding-video-gallery {
+    background-image: url('/images/WhatsApp Image 2025-07-18 at 11.35.34_40586063.jpg');
+}
+
+/* Overlays for readability */
+.gallery-section::before,
+.category-gallery::before,
+.video-gallery::before,
+.contact-us-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Ensure content is above overlay */
+.gallery-content,
+.category-content,
+.video-content,
+.contact-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: orange;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: #f0f0f0; /* Slightly lighter text for readability */
+}
+
+.image-gallery, .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.video-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.gallery-item, .video-container video {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.08);
+}
+
+.video-container video {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.video-container video:hover {
+    transform: scale(1.02);
+}
+
+/* ----------- Contact Us Specific Styles ----------- */
+.contact-details {
+    display: grid;
+    /* Default for smaller screens: auto-fit with minimum item width */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* For larger screens (e.g., desktops), force 3 columns */
+@media (min-width: 992px) { 
+    .contact-details {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+/* For medium screens (e.g., tablets), allow 2 columns to fit */
+@media (max-width: 768px) { 
+    .contact-details {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* For very small screens (e.g., mobile phones), single column */
+@media (max-width: 576px) { 
+    .contact-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-item i {
+    font-size: 2.5rem;
+    color: orange;
+    margin-bottom: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.contact-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 0;
+}
+
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.contact-form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    text-align: left;
+}
+
+.contact-form-container h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: orange;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: orange;
+    background-color: #444;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.5); /* Add subtle glow on focus */
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: orange;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-form .submit-btn:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+/* ----------- Lightbox Styles (Image and Video) ----------- */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-btn, .prev-btn, .next-btn {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s ease;
+}
+
+.close-btn:hover, .prev-btn:hover, .next-btn:hover {
+    color: orange;
+}
+
+.close-btn {
+    top: 20px;
+    right: 35px;
+}
+
+.prev-btn, .next-btn {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+
+/*!* --- ✨ Booking Form Overlay (modern style) --- *!*/
+/* Overlay (hidden by default) */
+.booking-form-overlay {
+    display: none; /* hidden initially */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    /* Smooth fade effect */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show overlay */
+.booking-form-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Popup box */
+.booking-form-container {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: slideDown 0.3s ease;
+}
+
+/* Slide-down animation */
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close button (X) */
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Form elements */
+.booking-form-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.booking-note p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------- Responsive ----------- */
+#menu-icon {
+    font-size: 1.8rem;
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+@media (max-width: 840px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-menu.active { 
+        display: flex;
+    }
+    #menu-icon { 
+        display: block;
+    }
+
+    .nav-menu li a {
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .category .dropdown {
+        background: rgba(0, 0, 0, 0.9);
+        border-top: 2px solid orange;
+        position: static;
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+    .category .dropdown li {
+        margin: 0;
+    }
+    .category .dropdown li a {
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+    }
+
+    .hero-section .content-box h1 { font-size: 2.5rem; }
+
+    .social-icons {
+        flex-direction: row;
+        top: 20px;
+        right: 60px;
+    }
+    
+    .video-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact details on mobile will adapt via auto-fit minmax(200px, 1fr) for 2 cols, then 1 col */
+    /* Handled by the general .contact-details and media queries above */
+
+    .buy-now {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        margin-left: 5px;
+    }
+
+    /* Responsive adjustments for booking form */
+    .booking-form-container {
+        padding: 30px 20px;
+        max-width: 95%;
+    }
+    .booking-form-container h3 {
+        font-size: 1.8rem;
+    }
+}
+.book-now-btn {
+    position: relative;
+    padding: 12px 28px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(45deg, #ff8c00, #ff4d00);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255,140,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-now-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+    transform: rotate(45deg);
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-200%) rotate(45deg); }
+    100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.book-now-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 6px 20px rgba(255,77,0,0.6);
+}
+
+.book-now-btn:active {
+    transform: scale(0.96);
+}
